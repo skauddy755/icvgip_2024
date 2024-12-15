@@ -1,4 +1,4 @@
-> ICVGIP is organized by IUPARAI (Indian Unit for Pattern Recognition and Artificial Intelligence)
+> ICVGIP is organized by IUPRAI (Indian Unit for Pattern Recognition and Artificial Intelligence)
 
 # Why make notes and later comppile them?
 
