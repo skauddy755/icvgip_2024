@@ -26,7 +26,7 @@ In a given tutorial session, there were multiple tutorials occuring simultaneous
 
 - Session - 1
     - T1: Tutorial on 3D Garment Modeling & Animation
-    - T2: Recent trends in AI for remote sensing image analysis
+    - [T2: Recent trends in AI for remote sensing image analysis](T2.md)
     - T3: Visual Recognition and Cancer Detection
 - Session - 2
     - T8: Multi-modal Generative Models
