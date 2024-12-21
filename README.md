@@ -9,7 +9,7 @@ I agree that most of the concepts touched upon during the sessions can be better
 4. No matter how attentive I was during the sessions, a week later I would either forget most of the concepts, or remember a distorted version of the concepts (which is worse)
 
 > **DISCLAIMER:** 
-> 1. The notes were made only for tutorials, and planery talks. Since in my view paper presenters could do a good job explaining the central concepts (owing to lack of sufficient time, as each paper was given only 7 minutes) 
+> 1. The notes were made only for tutorials, and planery talks. Since in my view paper presenters could not do a good job explaining the central concepts (owing to lack of sufficient time, as each paper was given only 7 minutes) 
 > 2. Even for tutorials and planery talks, I have taken notes of only the topics which seemed interesting and relevant to my field.
 > 3. I only capture the central idea and reference papers which were discussed during the sessions. 
 
