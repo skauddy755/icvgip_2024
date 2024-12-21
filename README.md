@@ -29,18 +29,18 @@ In a given tutorial session, there were multiple tutorials occuring simultaneous
     - [T2: Recent trends in AI for remote sensing image analysis](T2.md)
     - T3: Visual Recognition and Cancer Detection
 - Session - 2
-    - T8: Multi-modal Generative Models
+    - [T8: Multi-modal Generative Models](T8.md)
     - T5: Causal Inference and Explainable Models for Medical Imaging
 - Session - 3
     - T6: Generative AI for Predicting Neurodegeneration
-    - T7: Foundation Models: Pretraining and Parameter Efficient Fine Tuning
+    - [T7: Foundation Models: Pretraining and Parameter Efficient Fine Tuning](T7.md)
 
 ### Planery Talks [official_link](https://icvgip.in/plenaryspeakers) 
 
 - PT1: Looking and Listening to Light: Advances in Optical and Optoacoustic Imaging - by *Vasilis Ntziachristos*
-- PT2: On Visual Quality: Pictures, Videos, and GenAI - by *Alan C. Bovik*
-- PT3: Towards a real conversation between vision in brains and machines - by *SP Arun*
+- [PT2: On Visual Quality: Pictures, Videos, and GenAI - by *Alan C. Bovik*](PT2.md)
+- [PT3: Towards a real conversation between vision in brains and machines - by *SP Arun*](PT3.md)
 - PT4: The 3D Gaussian Splatting Adventure: Past, Present and Future - by *George Drettakis*
-- PT5: Long Video Understanding in the age of large MLMs - by *Arsha Nagrani*
+- [PT5: Long Video Understanding in the age of large MLMs - by *Arsha Nagrani*](PT5.md)
 - PT6: Multimodal Spatial Intelligence for Interacting in a Dynamic World - by *Deva Ramanan*
 
