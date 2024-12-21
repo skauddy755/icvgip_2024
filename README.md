@@ -1,6 +1,6 @@
 > ICVGIP is organized by IUPRAI (Indian Unit for Pattern Recognition and Artificial Intelligence)
 
-# Why make notes and later comppile them?
+# Why make notes and later compile them?
 
 I agree that most of the concepts touched upon during the sessions can be better read later from the original research papers or even youtube. However, it is important that someone takes notes of:
 1. What are the contents of the topic (so that it can be later searched)
@@ -15,14 +15,14 @@ I agree that most of the concepts touched upon during the sessions can be better
 
 # Contents and overall structure of the 3 Day Conference
 
-The event comprised of Tutorials, Planery Talks, Oral Sessions, Symposium, Tiny Papers, and Vision India Papers distributed accross 3 days
+The event comprised of Tutorials, Planery Talks, Oral Sessions, Symposium, Tiny Papers, and Vision India Papers distributed over 3 days
 https://icvgip.in/program
 
 Links to all the papers discussed during Oral Sessions, Tiny Papers, and Vision India can be found in the official website itself.
 
 ### Tutorial Sessions [official_link](https://icvgip.in/tutorials)
 
-In a given tutorial session, there were multiple tutorials occuring simultaneously in different venues. Attendes needed to select one out of them.
+In a given tutorial session, there were multiple tutorials occuring simultaneously in different venues. Attendees needed to select any one out of them.
 
 - Session - 1
     - T1: Tutorial on 3D Garment Modeling & Animation
