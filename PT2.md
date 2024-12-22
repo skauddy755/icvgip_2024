@@ -1,4 +1,147 @@
+> Topic: \
+> On Visual Quality
+>  
+> Speaker: \
+> Alan C. Bovik, Professor, University of Texas at Austin
+
+I believe parts of his talk was centered around [Video Quality Assessment: A Comprehensive Survey | 11-Dec-2024 | Zheng et al.](https://arxiv.org/pdf/2412.04508), although he never mentioned about this paper, But here are other clues:
+1. I see him as an author (10th) in this paper.
+2. Introduction section of the paper talks about "Perceptually designed video quality assessment models" which in principle aligns with the central philosophy of the talk.
+3. The paper mentions CONTRIQUE and Re-IQA, which were also discussed towards the end of the talk.
+
+# Intro Problem - go and take img with your device
+
+How many distortions can you find?
+1. focus blur
+2. under/over exposure
+3. Jitter
+4. Low light noise
+5. ...
+6. combination of all these
+
+i.e., it is very difficult to report the quality of a picture..
+
+# Measuring Picture quality is important
+
+### Video quality issues are pervasive:
+
+- today 80% if US internet traffic is Pictures and videos
+- Degraded by infinite diversities of distortions and severity
+- often in complex combinations = new distortions
+- impacts viewing enjoyment and bandwidth use
+
+### Classic Communication Channel
+
+- signal in -> tx -> channel -> rec > signal out
+
+### Today's visual communication systems
+
+- Today's transmitter are photons bouncing from everywhere (natural visual transmitter)
+- Today's receiver is someone's eyes (natural visual receiver)
+- Channel (capture device, display device, streaming services ...) is all sort of things in the internet.
+
+Over the years the brain has adapted to the highly regular statistics of the visual world. 
+Thereforre the natural transmitter and natural receiver are duals of each other
+
+
+### Sources of streaming distortions
+
+Everywhere (distortions during bouncing, even noise at neural level)
+
+### Useful for Correcting Distortions
+
+VQP = Visual quality predictor 
+used to measure output of every de-distortions model function (which are just approximations) 
+
+deblur, denoise, deblock, ... 
+But it has been FRUITLESS 
+
+LET'S SEE DISTORTION AT THE LEVEL OF NEURON (BIOLOGICAL OR EVEN ON GPU) 
+
+### Controlling Compression
+
+Modern VQP models reduce visual data traffic by ~25% 
+Examples: SSIM, VIF, VMAF, BRISQUE, NIQE 
+
+# Ruderman's Walk in the Woods
+
+> take an image f 
+> Over each window, g = (f - mean) / (std + 1) 
+> mean = local mean luminance 
+> std = local luminance contrast 
+
+OBSERVATION: The histogram plotted was a gaussian... 
+
+In a way (f - mean) was a bandpass function 
+
+
+## The gaussian law of pictures and videos
+
+let m = spatial coordinate
+
+Pass the img f through a bandpass filter 
+```
+g(m) = f(m) * h(m) 
+```
+
+We can break down the original video signal into two components (1) Info Component (2) Noise Component. 
+Surprisingly, our brain is somehow able to decouple and extract the (1) out of the combination. This is attributed evolution. 
+
+This is called the Gaussian Scale Mixture Model (GMM) and most natural videos, obey this behaviour. 
+However, this underlying gaussianity of HQ visual signals is broken by the presence of distortions. 
+
+## The Brain
+
+- Our brain performs multiscale and Bandpass Operations. 
+- Different parts of the brain are different filters (for example: some are like wavelet transforms) 
+
+## Efficient Encoding Hypothesis
+
+- Our brain gets so much of visual information throughout the day, and still manages to extract relevent information out of it in so much less time. 
+- This is not possible without an efficient encoding scheme. 
+- There must be some form of compression happening. 
+
+> NOTE: As per some studies, all sensory neurons are "bandpass filters" and "divisive normalized". (1) This is a lot like LAYER NORMALIZATION in Deep Nets. (2) This also explains "perceptual contrast masking"
+
+## Generalized Gaussian
 
 ```
-This page is under construction...
+C * exp((-1 * abs(x) / sigma) ^ beta)
 ```
+
+Here, `beta` is called the shape of gaussianity, and is equal to 2 for true/pure gaussian. 
+
+
+# General Video Quality
+
+The speaker makes a hypothesis that: 
+- Good Quality Video => Close to ideal gaussian (`beta` close to 2) 
+- Bad Quality Video => Far from ideal gaussian (`beta` far from 2) 
+
+This property can be used to detect fake videos. 
+
+DISCLAIMER: There are existing models which does a great job in this fake video detection task. But they are heavy models and are AI based. The speaker wants to understand whether we can use a simple statistics based deterministic model to do the same task, and if so then upto how much degree. The statistic based model would of course lack semantic understanding of the videos (which btw is one of the factors to identify a fake/absurd video). But it can give some insights into video, their distributions in general. Knowing this would be helpful in understanding how brain detects fake video, and whether this skill can be transposed somehow into AI based models. 
+
+## Experiments on Pictures generated by GenAI models
+
+Questions in mind: 
+- What are their statistics ? 
+- Are quality models useful for understanding them ? 
+
+### Bandpass Statistics of GenAI pictures (on 7 major GenAI models)
+
+- They do obey the earlier laws by some degree.
+- We applied "simple bandpass" and "divisive normalization" on GenAI generated pictures; studied their histograms; tried to model the graphs using gaussian; and estimated the `beta` values
+- OBSERVATION: (1) We were able to model the histograms using generalized gaussian. (2) `beta` value clustered somewhere around 2 (Stable Diffusion was particularly better among others since its `beta` values was closest to 2)
+
+
+# AIGC Detection based on just IQA
+
+- AIGC = AI Generated Content (example Fake Images and Videos)
+- IQA = Image Quality Assessment
+
+Based on the above insights, they used the following IQA for AIGC Detection Tasks:
+1. [CONTRIQUE: Contrastive Image QUality Evaluator](https://arxiv.org/pdf/2110.13266)
+2. [ReIQA: Rethinking Image Quality Assessment](https://arxiv.org/pdf/2304.00451)
+
+They claim to have got near SOTA performance with these lighter models. So, a simple ResNet-50 model can be used to detect AIGC based on just Quality Predictors
