@@ -90,58 +90,86 @@ For each DNN models, training scheme and dataset the authors tested a total of 1
 
 ## 1. Effect of Network Architure
 
+> 14 DNN architectures were evaluated
+
 ![alt text](archive/image_16.png)
 
-### Brain-like properties present in all architectures
+### 1.1 Brain-like properties present in all architectures
 
+- Both CNN and ViT families consistently display some brainlike properties like *Object Normalization*, *Scene Incongruence*, *Mirror Confusion* and *Correlated Sparseness* across shapes/textures and morph-lines.
+- Despite the presence of these effects, architectures did vary in how close they are to the empirically observed values from the brain. For example,
+    1. In both *sparseness* experiments, all CNN families have a closer effect to the brain when compared to the ViTs.
+    2. On the other hand, in *Mirror confusion*, the closest effect to what is found in the brain is observed in the vanilla Vision Transformer architectures.
 
+### 1.2 Brain-like properties unique to specific architectures
 
-### Brain-like properties unique to specific architectures
+- *Weber’s law* is not present in any of the Vision Transformers, yet commonly found in CNNs. In fact, some of the CNNs like the Inceptionv3 network come extremely close to the effect strength in humans.
+- *Occlusion effects* are slightly more common in CNNs, despite neither architectures getting close to the human level.
+- In the *global processing effect*, however, the only networks to come close to exhibiting a human-like global advantage is the vanilla ViT networks.
 
+### 1.3 Brain-like properties absent in all architectures
 
+- Effects like *relative size encoding*, *surface invariance* and *3D processing* are almost equally absent, and far away from the brain, in both families.
 
-### Brain-like properties absent in all architectures
+### 1.4 Embedding of effect strength across all properties
 
+In order to visualize the closeness and clustering properties of various architectures and the brain, the authors performed a PCA on the scores of all the 14 properties; and they took only the first two principle components. This allowed them to represent the 14-dimensional space into a lower 2-dimensional space.
 
+The plot reveals the following:
+- Strong clustering effect based on architectural family.
+- But Notable outliers of the vanilla ViT and the ConvNeXt architectures.
+    - The vanilla ViT perform remarkably better than its family members in *Mirror Confusion* and *Global Processing*.
+    - Inherent similarity of qualitative representations of ConvNeXts and ViTs. This is attributed to ConvNeXts being designed to ‘modernize’ the CNN training process by mimicking the design principles of ViTs.
+- The Swin and DeiT architectures are fundamentally similar in nature to CNNs than the vanilla ViT as they reintroduce the notion of hierarchical information processing with a sliding window approach.
 
-### Embedding of effect strength across all properties
+### 1.5 Brain-like properties most and least affected by network architecture variation
 
+- The most distinct brain property effect changes caused by architecture were on *Weber’s Law*, *Correlated sparseness* (morphlines and shape/texture) and *Global Processing*. We speculate that these effect variations can be mostly explained by the bias towards global information encoded in the Vision Transformer families, a direct contrast with CNNs. Convolutional processing of image information leads CNNs to synthesize its representations of a full image incrementally, unlike in ViTs, which could also make it more sensitive to relative differences in feature sizes. The same explanation may hold for the absence of global processing in CNNs whereas the vanilla ViTs come close to the brain effect level. Since Vision Transformers pool and process global information, they tend to also maintain distributed feature representations – meaning that single units do not necessarily become highly selective for singular features which could explain why there is less correlation in selectivity as observed in the sparseness experiments.
 
 ## 2. Effect of Training Dataset
 
+> Tested two CNNs and a ViT network architecture. Each network was pre-trained on "objects", "scenes" or "faces", which represent widely different visual experiences.
+
 ![alt text](archive/image_17.png)
 
-### Brain-like properties present in all architectures
+### 2.1 Brain-like properties present in all dataset variations
 
+- Networks trained on all datasets exhibit *object normalization*, *mirror confusion* and *morph-line correlated sparseness*. Interestingly, none of the face-trained networks exhibit *correlated selectivity to shapes and textures*. This could simply be a result of significantly less feature variation in face datasets or alternatively because face units need not be selective to multiple features unlike object or scene-trained models.
 
+### 2.2 Brain-like properties unique to specific dataset variations
 
-### Brain-like properties unique to specific architectures
+- Architectural and training data may have complementary effects in the emergence of certain brain properties
+    - Training on scenes and faces causes the emergence of *Weber’s law* (which is otherwise absent) in ViTs
+    - Face and scene-trained CNNs lost the ability to process *occlusion* when compared to object training
+- *Global processing* was present at human-like levels in Vision Transformers but not in other architectures.
+- *Thatcher effect* is present in face-trained networks, confirming that exposure to objects or scenes alone does not suffice for this effect to emerge.
 
+### 2.3 Brain-like properties absent in all dataset variations
 
+- Relative size encoding and surface invariance seem to be largely unaffected by the training dataset.
 
-### Brain-like properties absent in all architectures
+### 2.4 Embedding of effect strength across all properties
 
-
-
-### Embedding of effect strength across all properties
-
+The 2D PCA plot reveals:
+- Lack of clustering based on training dataset.
+- However, it is observed that, CNNs and ViTs tend to cluster together with the exception of faces. Thus, object and scene experience appears qualitatively different from face experience.
 
 ## 3. Effect of Training Regime
 
+> Two different training regimes were evaluated. "Supervised" and "Self-supervised" 
+
 ![alt text](archive/image_18.png)
 
-### Brain-like properties present in all architectures
+### 3.1 Brain-like properties present in all training regimes
 
+- consistent presence of *object normalization*, *mirror confusion* and *morph-line sparseness* across architectures and training regime.
 
+### 3.2 Brain-like properties unique to specific training regimes
 
-### Brain-like properties unique to specific architectures
+- *Correlated sparseness for shapes and textures* are typically present in Vision Transformers but are lost in vanilla ViTs trained adversarially or in a self-supervised manner.
+- It is interesting to note that despite potential differences due to the regime, ResNets maintain the *correlated unit selectivity for shapes and textures*
 
+### 3.3 Embedding of effect strength across all properties
 
-
-### Brain-like properties absent in all architectures
-
-
-
-### Embedding of effect strength across all properties
-
+- Fewer variations in qualitative effects on varying the training regime. Models cluster based on architecture rather than training regime.
 
